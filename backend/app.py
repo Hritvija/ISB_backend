@@ -13,8 +13,13 @@ import os
 from llama_cpp import Llama
 
 # === Paths ===
-DB_PATH = "C:\\Users\\singh\\.spyder-py3\\survey_isb.db"
-MODEL_PATH = "D:/gguf/codellama-nl2sql.Q4_K_M.gguf"  # <--- Your merged model
+import os
+
+# Automatically resolve the correct path relative to the app.py location
+BASE_DIR = os.path.dirname(__file__)
+
+DB_PATH = os.path.join(BASE_DIR, "survey_isb.db")
+MODEL_PATH = os.path.join(BASE_DIR, "models", "codellama-nl2sql.Q4_K_M.gguf") # <--- Your merged model
 
 # === Load LLM ===
 llm = Llama(model_path=MODEL_PATH, n_ctx=2048, n_threads=12)
